@@ -1,0 +1,36 @@
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = 'nemisis82'
+    key = '2e92f67abf77bd5620a7f255bd78550f03d3f7af'
+
+    publications = ['published','archived']
+//    filesSpec { //When uploading any arbitrary files ('filesSpec' is a standard Gradle CopySpec)
+//        from 'arbitrary-files'
+//        into 'standalone_files/level1'
+//        rename '(.+)\\.(.+)', '$1-suffix.$2'
+//    }
+    dryRun = false //Whether or not to run this as dry-run, without deploying
+    publish = true // If version should be auto published after an upload
+    pkg {
+        repo = 'maven'
+//        userOrg = 'myorg' //An optional organization name when the repo belongs to one of the user's orgs
+        name = 'systemuihelper'
+        desc = 'A library that helps with the Android System UI visibility across different API levels (All credit ' +
+                'goes to Chris Banes and Roman Nurik).'
+        websiteUrl = 'https://github.com/Nemisis/SystemUiHelper'
+        issueTrackerUrl = 'https://github.com/Nemisis/SystemUiHelper/issues'
+        vcsUrl = 'https://github.com/Nemisis/SystemUiHelper.git'
+        licenses = ['Apache-2.0']
+        labels = ['android', 'systemui']
+        publicDownloadNumbers = true
+//        attributes= ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee'] //Optional package-level attributes
+        //Optional version descriptor
+        version {
+            name = '1.0.0' //Bintray logical version name
+            desc = 'Version number 1.'
+            vcsTag = '1.0.0'
+        }
+    }
+
+}
